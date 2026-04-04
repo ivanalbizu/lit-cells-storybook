@@ -1,0 +1,35 @@
+/* Open Cells — ocultar páginas inactivas */
+#app-content > [state="cached"],
+#app-content > [state="inactive"] {
+  display: none;
+}
+
+/* Reset base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--bk-font-sans, system-ui, sans-serif);
+  background: var(--bk-color-surface, #f4f6f9);
+  color: var(--bk-color-text, #1a1a2e);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App shell */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+bk-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#app-content {
+  flex: 1;
+}

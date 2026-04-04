@@ -1,0 +1,48 @@
+:root {
+  /* Colors */
+  --bk-color-primary:       #003087;
+  --bk-color-primary-hover: #00236b;
+  --bk-color-secondary:     #0066cc;
+  --bk-color-success:       #007a3d;
+  --bk-color-warning:       #f5a623;
+  --bk-color-danger:        #c0392b;
+  --bk-color-info:          #0066cc;
+
+  /* Neutrals */
+  --bk-color-surface:       #f4f6f9;
+  --bk-color-surface-alt:   #ffffff;
+  --bk-color-border:        #d1d9e0;
+  --bk-color-text:          #1a1a2e;
+  --bk-color-text-muted:    #6b7280;
+  --bk-color-text-inverse:  #ffffff;
+
+  /* Typography */
+  --bk-font-sans:   'Inter', system-ui, sans-serif;
+  --bk-font-mono:   'Roboto Mono', monospace;
+  --bk-font-size-xs:   0.75rem;
+  --bk-font-size-sm:   0.875rem;
+  --bk-font-size-md:   1rem;
+  --bk-font-size-lg:   1.125rem;
+  --bk-font-size-xl:   1.25rem;
+
+  /* Spacing */
+  --bk-space-1:  0.25rem;
+  --bk-space-2:  0.5rem;
+  --bk-space-3:  0.75rem;
+  --bk-space-4:  1rem;
+  --bk-space-6:  1.5rem;
+  --bk-space-8:  2rem;
+
+  /* Borders */
+  --bk-radius-sm:   4px;
+  --bk-radius-md:   8px;
+  --bk-radius-card: 12px;
+  --bk-radius-full: 9999px;
+
+  /* Shadows */
+  --bk-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --bk-shadow-md:   0 4px 16px rgba(0, 0, 0, 0.12);
+
+  /* Transitions */
+  --bk-transition: 150ms ease;
+}
