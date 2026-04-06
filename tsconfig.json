@@ -15,7 +15,8 @@
     "paths": {
       "@open-cells/core": ["./src/types/open-cells.d.ts"],
       "@open-cells/core/types": ["./src/types/open-cells.d.ts"],
-      "@open-cells/page-controller": ["./src/types/open-cells.d.ts"]
+      "@open-cells/page-controller": ["./src/types/open-cells.d.ts"],
+      "@/*": ["./src/*"]
     },
     "moduleDetection": "force",
     "noEmit": true,

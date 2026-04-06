@@ -17,8 +17,8 @@
   --bk-color-text-inverse:  #ffffff;
 
   /* Typography */
-  --bk-font-sans:   'Inter', system-ui, sans-serif;
-  --bk-font-mono:   'Roboto Mono', monospace;
+  --bk-font-sans:      'Inter', system-ui, sans-serif;
+  --bk-font-mono:      'Roboto Mono', monospace;
   --bk-font-size-xs:   0.75rem;
   --bk-font-size-sm:   0.875rem;
   --bk-font-size-md:   1rem;
@@ -45,4 +45,29 @@
 
   /* Transitions */
   --bk-transition: 150ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Colors — versión dark: primary más claro para mantener contraste */
+    --bk-color-primary:       #4a7fcb;
+    --bk-color-primary-hover: #6b9fd8;
+    --bk-color-secondary:     #4da3ff;
+    --bk-color-success:       #34d399;
+    --bk-color-warning:       #fbbf24;
+    --bk-color-danger:        #f87171;
+    --bk-color-info:          #4da3ff;
+
+    /* Neutrals — fondo oscuro tipo navy bancario */
+    --bk-color-surface:       #0f172a;
+    --bk-color-surface-alt:   #1e293b;
+    --bk-color-border:        #334155;
+    --bk-color-text:          #e2e8f0;
+    --bk-color-text-muted:    #94a3b8;
+    --bk-color-text-inverse:  #0f172a;
+
+    /* Shadows — más sutiles sobre fondo oscuro */
+    --bk-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --bk-shadow-md:   0 4px 16px rgba(0, 0, 0, 0.6);
+  }
 }
