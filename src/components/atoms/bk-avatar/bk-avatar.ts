@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export type AvatarSize = 'sm' | 'md' | 'lg';
@@ -47,7 +47,11 @@ export class BkAvatar extends LitElement {
 
   render() {
     return html`
-      <div class="avatar ${this.size}" role="img" aria-label=${this.name || 'Avatar'}>
+      <div
+        class="avatar ${this.size}"
+        role=${!this.src ? 'img' : nothing}
+        aria-label=${!this.src ? (this.name || 'Avatar') : nothing}
+      >
         ${this.src
           ? html`<img src=${this.src} alt=${this.name} />`
           : html`${this.initials}`}

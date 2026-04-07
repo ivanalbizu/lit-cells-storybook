@@ -20,6 +20,15 @@ const meta: Meta = {
     loading:      { control: 'boolean' },
     emptyMessage: { control: 'text' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Lista de movimientos con filtrado por categoría. Gestiona internamente el chip seleccionado y filtra el array de \`transactions\` sin emitir eventos — el filtrado es local al componente.
+
+Con \`loading\` muestra spinners en lugar de filas. Con array vacío (tras filtrar o sin datos) muestra \`emptyMessage\`.`,
+      },
+    },
+  },
   args: {
     loading: false,
     emptyMessage: 'No hay movimientos para mostrar.',

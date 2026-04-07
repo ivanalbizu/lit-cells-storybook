@@ -14,6 +14,15 @@ const meta: Meta = {
     disabled:    { control: 'boolean' },
     required:    { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Campo de entrada básico. Gestiona su propio label y mensaje de error pero sin wrapper accesible completo — para formularios reales usa \`bk-form-field\`, que añade \`aria-describedby\` y hint.
+
+Emite \`bk-input-change\` con \`{ name, value }\` en cada cambio.`,
+      },
+    },
+  },
   args: {
     type: 'text',
     label: 'IBAN destino',

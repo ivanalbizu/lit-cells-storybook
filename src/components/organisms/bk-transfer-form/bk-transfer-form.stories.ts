@@ -10,6 +10,15 @@ const meta: Meta = {
     successMessage: { control: 'text' },
     errorMessage:   { control: 'text' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Formulario de transferencia con validación. Campos: IBAN destino, importe y concepto.
+
+Emite \`bk-transfer-submit\` con \`{ iban, amount, concept }\` solo si la validación pasa. Emite \`bk-transfer-cancel\` al pulsar cancelar. Los mensajes de éxito/error los gestiona la página contenedora via \`successMessage\` y \`errorMessage\`.`,
+      },
+    },
+  },
   args: {
     loading: false,
     successMessage: '',

@@ -8,6 +8,7 @@ const meta: Meta = {
   title: 'Pages/LoginPage',
   component: 'login-page',
   decorators: [withCellsBridge],
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -41,6 +42,7 @@ export const Default: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('login-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
   },
 };
@@ -53,6 +55,7 @@ export const WithError: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('login-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
     // Simula un intento fallido de login
     el._error = 'Credenciales incorrectas. Prueba demo@bank.es / 1234';
@@ -68,6 +71,7 @@ export const Loading: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('login-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
     // Simula que la petición de auth está en curso
     el._loading = true;

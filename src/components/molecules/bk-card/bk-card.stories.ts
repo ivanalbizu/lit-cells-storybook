@@ -9,6 +9,15 @@ const meta: Meta = {
     elevated:    { control: 'boolean' },
     interactive: { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Contenedor base con radio y sombra. Acepta cualquier contenido via slot.
+
+\`elevated\` aumenta la sombra (\`--bk-shadow-md\`). \`interactive\` añade cursor pointer y efecto hover — úsalo cuando la tarjeta entera sea clickable.`,
+      },
+    },
+  },
   args: { elevated: false, interactive: false },
 };
 export default meta;

@@ -8,6 +8,13 @@ const meta: Meta = {
   argTypes: {
     status: { control: 'select', options: ['pending', 'completed', 'failed'] },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Etiqueta de estado para transacciones. Tres estados con color e icono propios: `pending` (amarillo), `completed` (verde), `failed` (rojo).',
+      },
+    },
+  },
   args: { status: 'pending' },
 };
 export default meta;

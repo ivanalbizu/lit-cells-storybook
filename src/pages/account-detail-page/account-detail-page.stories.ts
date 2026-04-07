@@ -11,6 +11,7 @@ const meta: Meta = {
   title: 'Pages/AccountDetailPage',
   component: 'account-detail-page',
   decorators: [withCellsBridge],
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -47,6 +48,7 @@ export const Default: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('account-detail-page') as any;
     if (!el) return;
+    await el.updateComplete;
 
     el._pageController.navigate = fn().mockName('navigate');
     el._pageController.subscribe = mockSubscribeWithData();
@@ -62,6 +64,7 @@ export const SavingsAccount: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('account-detail-page') as any;
     if (!el) return;
+    await el.updateComplete;
 
     el._pageController.navigate = fn().mockName('navigate');
     el._pageController.subscribe = mockSubscribeWithData();
@@ -77,6 +80,7 @@ export const Loading: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('account-detail-page') as any;
     if (!el) return;
+    await el.updateComplete;
 
     el._pageController.navigate = fn().mockName('navigate');
     // subscribe silencioso → los canales no entregan datos → estado de carga
@@ -93,6 +97,7 @@ export const NotFound: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('account-detail-page') as any;
     if (!el) return;
+    await el.updateComplete;
 
     el._pageController.navigate = fn().mockName('navigate');
     el._pageController.subscribe = mockSubscribeWithData();

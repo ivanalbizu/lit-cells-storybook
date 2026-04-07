@@ -10,6 +10,15 @@ const meta: Meta = {
     message:     { control: 'text' },
     dismissible: { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Mensaje de notificación con icono contextual. Cuatro tipos semánticos: \`info\`, \`success\`, \`warning\`, \`error\`.
+
+Con \`dismissible\` activo muestra un botón de cierre que emite \`bk-alert-dismiss\` y oculta el componente. Usado en páginas para feedback de operaciones (login, transferencias).`,
+      },
+    },
+  },
   args: {
     type: 'info',
     message: 'La transferencia será procesada en 1-2 días hábiles.',

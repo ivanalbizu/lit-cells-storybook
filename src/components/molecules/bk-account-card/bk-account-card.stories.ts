@@ -12,6 +12,15 @@ const meta: Meta = {
     currency: { control: 'select', options: ['EUR', 'USD', 'GBP'] },
     loading:  { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Tarjeta de cuenta bancaria. Muestra alias, últimos 4 dígitos del IBAN y saldo formateado con \`bk-amount\`.
+
+En estado \`loading\` sustituye los valores por placeholders animados para evitar el layout shift cuando los datos llegan del canal.`,
+      },
+    },
+  },
   args: {
     alias: 'Cuenta Nómina',
     iban: 'ES12 3456 7890 1234 5678 9012',

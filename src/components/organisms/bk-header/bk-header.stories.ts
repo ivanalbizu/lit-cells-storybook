@@ -14,6 +14,13 @@ const meta: Meta = {
   component: 'bk-header',
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `Cabecera persistente de la aplicación. Vive fuera del router (\`#app-content\`) en el app shell — no se destruye al navegar entre páginas.
+
+Navega usando \`navigate\` global de \`@open-cells/core\`, no \`PageController\`. Marca el ítem activo comparando \`activeRoute\` con el \`route\` de cada \`NavItem\`.`,
+      },
+    },
   },
   argTypes: {
     appName:     { control: 'text' },

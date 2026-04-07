@@ -20,6 +20,7 @@ const meta: Meta = {
   title: 'Pages/AccountsPage',
   component: 'accounts-page',
   decorators: [withCellsBridge],
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -58,9 +59,9 @@ export const Default: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('accounts-page') as any;
     if (!el) return;
+    await el.updateComplete; // esperar a que Lit conecte el controller y registre subscriptions
 
     el._pageController.navigate = fn().mockName('navigate');
-    // Invocar la action del inbound simula la llegada de datos desde el canal
     fireInbound(el, CHANNEL_ACCOUNTS, ACCOUNTS);
   },
 };

@@ -9,6 +9,13 @@ const meta: Meta = {
     size:  { control: 'select', options: ['sm', 'md', 'lg'] },
     label: { control: 'text' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Indicador de carga accesible. El `label` se expone como `aria-label` para lectores de pantalla — siempre debe tener un valor descriptivo del contexto (ej. "Cargando cuentas...").',
+      },
+    },
+  },
   args: { size: 'md', label: 'Cargando...' },
 };
 export default meta;

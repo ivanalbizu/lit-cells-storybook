@@ -51,8 +51,6 @@ export class BkBadge extends LitElement {
       align-self: center;
       width: 6px;
       height: 6px;
-      min-width: 6px;
-      min-height: 6px;
       border-radius: 50%;
       background: currentColor;
     }

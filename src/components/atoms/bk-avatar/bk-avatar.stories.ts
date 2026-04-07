@@ -10,6 +10,15 @@ const meta: Meta = {
     src:  { control: 'text' },
     size: { control: 'select', options: ['sm', 'md', 'lg'] },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Avatar de usuario con dos modos: iniciales o imagen.
+
+Sin \`src\`, extrae hasta 2 iniciales del \`name\` y las muestra con \`role="img"\` en el contenedor. Con \`src\`, renderiza un \`<img>\` con su propio \`alt\` — el contenedor pierde el \`role\` para evitar que los lectores de pantalla anuncien el elemento dos veces.`,
+      },
+    },
+  },
   args: { name: 'Ana García', src: '', size: 'md' },
 };
 export default meta;

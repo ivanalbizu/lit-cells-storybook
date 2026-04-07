@@ -13,6 +13,15 @@ const meta: Meta = {
     currency: { control: 'select', options: ['EUR', 'USD'] },
     status:   { control: 'select', options: ['pending', 'completed', 'failed'] },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Fila de movimiento bancario. Combina concepto, fecha, categoría (\`bk-chip\` en modo display), importe (\`bk-amount\`) y estado (\`bk-badge\`).
+
+El importe usa \`colorize\` automáticamente: positivos en verde, negativos en rojo. Sin \`category\`, no renderiza el chip.`,
+      },
+    },
+  },
   args: {
     concept: 'Supermercado Mercadona',
     date: '02/04/2026',

@@ -11,6 +11,7 @@ const meta: Meta = {
   title: 'Pages/HomePage',
   component: 'home-page',
   decorators: [withCellsBridge],
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -46,6 +47,7 @@ export const Default: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('home-page') as any;
     if (!el) return;
+    await el.updateComplete;
 
     el._pageController.navigate = fn().mockName('navigate');
     sessionStorage.setItem('bk-user', JSON.stringify({ name: 'Ana García', email: 'demo@bank.es', role: 'regular' }));
@@ -63,6 +65,7 @@ export const Loading: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('home-page') as any;
     if (!el) return;
+    await el.updateComplete;
 
     el._pageController.navigate = fn().mockName('navigate');
     sessionStorage.setItem('bk-user', JSON.stringify({ name: 'Ana García', email: 'demo@bank.es', role: 'regular' }));

@@ -8,6 +8,7 @@ const meta: Meta = {
   title: 'Pages/TransferPage',
   component: 'transfer-page',
   decorators: [withCellsBridge],
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -36,6 +37,7 @@ export const Default: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('transfer-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
     el.onPageEnter();
   },
@@ -49,6 +51,7 @@ export const Loading: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('transfer-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
     el.onPageEnter();
     // Simula que la API aún no ha respondido
@@ -65,6 +68,7 @@ export const Success: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('transfer-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
     el.onPageEnter();
     // Inyecta el mensaje de éxito que devolvería la API
@@ -82,6 +86,7 @@ export const Error: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('transfer-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
     el.onPageEnter();
     // Inyecta el mensaje de error que devolvería la API
@@ -99,6 +104,7 @@ export const AccessDenied: StoryObj = {
   play: async ({ canvasElement }) => {
     const el = canvasElement.querySelector('transfer-page') as any;
     if (!el) return;
+    await el.updateComplete;
     el._pageController.navigate = fn().mockName('navigate');
     // Simula sesión de usuario regular (sin rol admin)
     sessionStorage.setItem('bk-user', JSON.stringify({ email: 'demo@bank.es', name: 'Ana García', role: 'regular' }));

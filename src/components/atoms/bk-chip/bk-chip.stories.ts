@@ -11,6 +11,15 @@ const meta: Meta = {
     selected: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Filtro seleccionable por categoría. Emite \`bk-chip-toggle\` con \`{ value, selected }\` al hacer clic.
+
+Usado en \`bk-transaction-list\` para filtrar movimientos. El estado de selección puede ser controlado externamente via \`selected\` o gestionado internamente por el contenedor.`,
+      },
+    },
+  },
   args: { label: 'Alimentación', value: 'food', selected: false, disabled: false },
 };
 export default meta;

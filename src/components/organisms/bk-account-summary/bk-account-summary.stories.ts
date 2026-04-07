@@ -12,6 +12,15 @@ const meta: Meta = {
     currency: { control: 'select', options: ['EUR', 'USD', 'GBP'] },
     loading:  { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Resumen de cuenta con datos y botones de acción. Compone \`bk-account-card\` con dos botones: transferir y ver detalle.
+
+Emite \`bk-summary-transfer\` y \`bk-summary-details\` — las páginas que lo usan escuchan estos eventos y navegan con \`PageController\`.`,
+      },
+    },
+  },
   args: {
     alias:   'Cuenta Nómina',
     iban:    'ES12 3456 7890 1234 5678 9012',

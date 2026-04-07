@@ -15,6 +15,17 @@ const meta: Meta = {
     required:    { control: 'boolean' },
     disabled:    { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Campo de formulario accesible completo: label, \`bk-input\`, hint y mensaje de error vinculado via \`aria-describedby\`.
+
+Diferencia con \`bk-input\`: \`bk-form-field\` es el bloque de construcción para formularios reales. \`bk-input\` es el elemento de entrada aislado, reutilizable en otros contextos.
+
+Emite \`bk-field-input\` con \`{ name, value }\` en cada cambio.`,
+      },
+    },
+  },
   args: {
     label: 'IBAN destino',
     name: 'iban',

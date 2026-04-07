@@ -11,6 +11,15 @@ const meta: Meta = {
     locale:   { control: 'select', options: ['es-ES', 'en-US', 'de-DE'] },
     colorize: { control: 'boolean' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `Formatea un importe numérico con divisa y locale usando \`Intl.NumberFormat\`.
+
+Con \`colorize\` activo, los importes positivos se muestran en verde (\`--bk-color-success\`) y los negativos en rojo (\`--bk-color-danger\`). Con \`colorize=false\` usa siempre el color de texto neutro.`,
+      },
+    },
+  },
   args: { value: 1500.50, currency: 'EUR', locale: 'es-ES', colorize: true },
 };
 export default meta;
