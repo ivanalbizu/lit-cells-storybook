@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import '../../atoms/bk-amount/bk-amount.ts';
 import '../../atoms/bk-badge/bk-badge.ts';
 import '../../atoms/bk-chip/bk-chip.ts';
+import '../../atoms/bk-skeleton/bk-skeleton.ts';
 import type { BadgeStatus } from '../../atoms/bk-badge/bk-badge.ts';
 
 @customElement('bk-transaction-item')
@@ -13,6 +14,7 @@ export class BkTransactionItem extends LitElement {
   @property({ type: Number }) amount = 0;
   @property() currency = 'EUR';
   @property() status: BadgeStatus = 'completed';
+  @property({ type: Boolean }) loading = false;
 
   static styles = css`
     :host { display: block; }
@@ -91,6 +93,22 @@ export class BkTransactionItem extends LitElement {
   }
 
   render() {
+    if (this.loading) {
+      return html`
+        <div class="item">
+          <bk-skeleton variant="circle" width="2.5rem"></bk-skeleton>
+          <div class="info">
+            <bk-skeleton variant="line" width="55%" height="0.875rem" style="margin-bottom:0.375rem"></bk-skeleton>
+            <bk-skeleton variant="line" width="35%" height="0.75rem"></bk-skeleton>
+          </div>
+          <div class="right">
+            <bk-skeleton variant="line" width="60px" height="0.875rem"></bk-skeleton>
+            <bk-skeleton variant="line" width="50px" height="0.75rem"></bk-skeleton>
+          </div>
+        </div>
+      `;
+    }
+
     return html`
       <div class="item">
         <div class="icon" aria-hidden="true">${this.categoryIcon}</div>

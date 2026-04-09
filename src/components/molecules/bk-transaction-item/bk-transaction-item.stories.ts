@@ -6,6 +6,7 @@ const meta: Meta = {
   title: 'Molecules/BkTransactionItem',
   component: 'bk-transaction-item',
   argTypes: {
+    loading:  { control: 'boolean' },
     concept:  { control: 'text' },
     date:     { control: 'text' },
     category: { control: 'select', options: ['food', 'transport', 'leisure', 'transfer', 'health', 'utilities', ''] },
@@ -34,6 +35,17 @@ El importe usa \`colorize\` automáticamente: positivos en verde, negativos en r
 export default meta;
 
 type Story = StoryObj;
+
+export const Loading: Story = {
+  args: { loading: true },
+  render: () => html`
+    <div style="max-width:480px;padding:0 1rem">
+      <bk-transaction-item loading></bk-transaction-item>
+      <bk-transaction-item loading></bk-transaction-item>
+      <bk-transaction-item loading></bk-transaction-item>
+    </div>
+  `,
+};
 
 export const Default: Story = {
   render: ({ concept, date, category, amount, currency, status }) =>

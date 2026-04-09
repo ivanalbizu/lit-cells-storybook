@@ -3,8 +3,11 @@ import { customElement, property } from 'lit/decorators.js';
 
 export type InputType = 'text' | 'number' | 'password' | 'email';
 
+let _counter = 0;
+
 @customElement('bk-input')
 export class BkInput extends LitElement {
+  private readonly _uid = `bk-input-${++_counter}`;
   @property() type: InputType = 'text';
   @property() label = '';
   @property() placeholder = '';
@@ -85,13 +88,13 @@ export class BkInput extends LitElement {
     return html`
       <div class="wrapper">
         ${this.label
-          ? html`<label for=${this.name || 'bk-input'}>
+          ? html`<label for=${this._uid}>
               ${this.label}
               ${this.required ? html`<span class="required">*</span>` : ''}
             </label>`
           : ''}
         <input
-          id=${this.name || 'bk-input'}
+          id=${this._uid}
           type=${this.type}
           name=${this.name}
           placeholder=${this.placeholder}
@@ -100,12 +103,12 @@ export class BkInput extends LitElement {
           ?required=${this.required}
           class=${this.error ? 'has-error' : ''}
           aria-invalid=${this.error ? 'true' : 'false'}
-          aria-describedby=${this.error ? `${this.name}-error` : ''}
+          aria-describedby=${this.error ? `${this._uid}-error` : ''}
           @input=${this._handleInput}
           @change=${this._handleChange}
         />
         ${this.error
-          ? html`<span class="error-msg" id="${this.name}-error" role="alert">
+          ? html`<span class="error-msg" id="${this._uid}-error" role="alert">
               ⚠ ${this.error}
             </span>`
           : ''}

@@ -51,17 +51,26 @@ export class BkAccountCard extends LitElement {
       letter-spacing: 0.05em;
     }
 
-    .loading-bar {
-      height: 2rem;
-      width: 140px;
-      border-radius: var(--bk-radius-sm, 4px);
-      background: rgba(255,255,255,0.2);
-      animation: pulse 1.4s ease-in-out infinite;
+    /* Skeleton — fondo oscuro: shimmer en blanco semitransparente */
+    .sk {
+      border-radius: var(--bk-radius-full, 9999px);
+      background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.15) 25%,
+        rgba(255,255,255,0.35) 50%,
+        rgba(255,255,255,0.15) 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.5s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.4; }
+    .sk-alias   { height: 0.75rem; width: 80px;  margin-bottom: var(--bk-space-4, 1rem); }
+    .sk-balance { height: 2rem;    width: 140px; margin-bottom: var(--bk-space-4, 1rem); }
+    .sk-iban    { height: 0.6rem;  width: 110px; }
+
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
   `;
 
@@ -73,13 +82,21 @@ export class BkAccountCard extends LitElement {
   }
 
   render() {
+    if (this.loading) {
+      return html`
+        <div class="card">
+          <div class="sk sk-alias"></div>
+          <div class="sk sk-balance"></div>
+          <div class="sk sk-iban"></div>
+        </div>
+      `;
+    }
+
     return html`
       <div class="card">
         <p class="alias">${this.alias || 'Cuenta corriente'}</p>
         <div class="balance">
-          ${this.loading
-            ? html`<div class="loading-bar"></div>`
-            : html`<bk-amount .value=${this.balance} currency=${this.currency} ?colorize=${false}></bk-amount>`}
+          <bk-amount .value=${this.balance} currency=${this.currency} ?colorize=${false}></bk-amount>
         </div>
         <p class="iban">${this.maskedIban}</p>
       </div>
