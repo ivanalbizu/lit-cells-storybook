@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { fn } from 'storybook/test';
 import { withCellsBridge } from '../../../.storybook/cells-decorator.ts';
-import { ACCOUNTS } from '../../mocks/accounts.ts';
-import { CHANNEL_ACCOUNTS } from '../../services/accounts-service.ts';
+import { ACCOUNTS } from '@/mocks/accounts.ts';
+import { CHANNEL_ACCOUNTS } from '@/services/accounts-service.ts';
 import './accounts-page.ts';
 
 /**

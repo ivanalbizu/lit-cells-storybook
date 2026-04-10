@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
-import type { TransferData } from '../../components/organisms/bk-transfer-form/bk-transfer-form.ts';
-import '../../components/organisms/bk-transfer-form/bk-transfer-form.ts';
-import '../../components/molecules/bk-alert/bk-alert.ts';
-import '../../components/atoms/bk-button/bk-button.ts';
+import type { TransferData } from '@/components/organisms/bk-transfer-form/bk-transfer-form.ts';
+import '@/components/organisms/bk-transfer-form/bk-transfer-form.ts';
+import '@/components/molecules/bk-alert/bk-alert.ts';
+import '@/components/atoms/bk-button/bk-button.ts';
 
 @customElement('transfer-page')
 export class TransferPage extends LitElement {

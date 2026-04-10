@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
-import '../../components/molecules/bk-form-field/bk-form-field.ts';
-import '../../components/molecules/bk-alert/bk-alert.ts';
-import '../../components/atoms/bk-button/bk-button.ts';
+import '@/components/molecules/bk-form-field/bk-form-field.ts';
+import '@/components/molecules/bk-alert/bk-alert.ts';
+import '@/components/atoms/bk-button/bk-button.ts';
 
 /**
  * Credenciales de demo:

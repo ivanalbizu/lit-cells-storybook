@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { fn } from 'storybook/test';
 import { withCellsBridge } from '../../../.storybook/cells-decorator.ts';
-import { ACCOUNTS } from '../../mocks/accounts.ts';
-import { TRANSACTIONS } from '../../mocks/transactions.ts';
-import { CHANNEL_ACCOUNTS, CHANNEL_TRANSACTIONS } from '../../services/accounts-service.ts';
+import { ACCOUNTS } from '@/mocks/accounts.ts';
+import { TRANSACTIONS } from '@/mocks/transactions.ts';
+import { CHANNEL_ACCOUNTS, CHANNEL_TRANSACTIONS } from '@/services/accounts-service.ts';
 import './account-detail-page.ts';
 
 const meta: Meta = {

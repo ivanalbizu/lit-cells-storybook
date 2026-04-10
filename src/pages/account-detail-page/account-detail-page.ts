@@ -1,12 +1,12 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
-import { CHANNEL_ACCOUNTS, CHANNEL_TRANSACTIONS } from '../../services/accounts-service.ts';
-import type { Account } from '../../mocks/accounts.ts';
-import type { Transaction } from '../../mocks/transactions.ts';
-import '../../components/organisms/bk-account-summary/bk-account-summary.ts';
-import '../../components/organisms/bk-transaction-list/bk-transaction-list.ts';
-import '../../components/atoms/bk-button/bk-button.ts';
+import { CHANNEL_ACCOUNTS, CHANNEL_TRANSACTIONS } from '@/services/accounts-service.ts';
+import type { Account } from '@/mocks/accounts.ts';
+import type { Transaction } from '@/mocks/transactions.ts';
+import '@/components/organisms/bk-account-summary/bk-account-summary.ts';
+import '@/components/organisms/bk-transaction-list/bk-transaction-list.ts';
+import '@/components/atoms/bk-button/bk-button.ts';
 
 @customElement('account-detail-page')
 export class AccountDetailPage extends LitElement {

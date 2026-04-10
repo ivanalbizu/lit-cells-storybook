@@ -2,9 +2,9 @@ import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 import type { InboundDef } from '@open-cells/page-controller';
-import { CHANNEL_ACCOUNTS } from '../../services/accounts-service.ts';
-import type { Account } from '../../mocks/accounts.ts';
-import '../../components/molecules/bk-account-card/bk-account-card.ts';
+import { CHANNEL_ACCOUNTS } from '@/services/accounts-service.ts';
+import type { Account } from '@/mocks/accounts.ts';
+import '@/components/molecules/bk-account-card/bk-account-card.ts';
 
 @customElement('accounts-page')
 export class AccountsPage extends LitElement {
