@@ -14,10 +14,10 @@ export class BkAccountCard extends LitElement {
     :host { display: block; }
 
     .card {
-      background: var(--bk-color-primary, #003087);
+      background: var(--bk-color-account-bg, #003087);
       border-radius: var(--bk-radius-card, 12px);
       padding: var(--bk-space-6, 1.5rem);
-      color: var(--bk-color-text-inverse, #fff);
+      color: #fff;
       box-shadow: var(--bk-shadow-md, 0 4px 16px rgba(0,0,0,0.12));
       min-width: 260px;
     }

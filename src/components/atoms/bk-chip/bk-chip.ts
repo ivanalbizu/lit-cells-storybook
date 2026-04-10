@@ -34,7 +34,7 @@ export class BkChip extends LitElement {
     button:hover:not(:disabled):not(.selected) {
       border-color: var(--bk-color-primary, #003087);
       color: var(--bk-color-primary, #003087);
-      background: var(--bk-color-surface, #f4f6f9);
+      background: var(--bk-color-surface-alt, #f4f6f9);
     }
 
     button.selected {

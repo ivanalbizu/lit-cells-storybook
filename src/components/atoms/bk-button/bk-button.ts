@@ -70,7 +70,7 @@ export class BkButton extends LitElement {
       color: var(--bk-color-primary, #003087);
     }
     .btn.secondary:hover:not(:disabled):not([aria-disabled='true']) {
-      background: var(--bk-color-surface, #f4f6f9);
+      background: var(--bk-color-surface-alt, #f4f6f9);
     }
 
     .btn.ghost {
@@ -78,7 +78,7 @@ export class BkButton extends LitElement {
       color: var(--bk-color-primary, #003087);
     }
     .btn.ghost:hover:not(:disabled):not([aria-disabled='true']) {
-      background: var(--bk-color-surface, #f4f6f9);
+      background: var(--bk-color-surface-alt, #f4f6f9);
     }
 
     .btn.danger {
@@ -86,7 +86,7 @@ export class BkButton extends LitElement {
       color: var(--bk-color-text-inverse, #fff);
     }
     .btn.danger:hover:not(:disabled):not([aria-disabled='true']) {
-      background: #a93226;
+      background: var(--bk-color-danger-hover, #a93226);
     }
 
     .spinner {

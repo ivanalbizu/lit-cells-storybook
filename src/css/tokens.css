@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light dark;
+
   /* Colors */
   --bk-color-primary:       #003087;
   --bk-color-primary-hover: #00236b;
@@ -39,6 +41,22 @@
   --bk-radius-card: 12px;
   --bk-radius-full: 9999px;
 
+  /* Account card — siempre fondo oscuro premium (no cambia con primary) */
+  --bk-color-account-bg: #003087;
+
+  /* Semantic state — backgrounds and text for badges, alerts */
+  --bk-color-success-bg:   #e6f4ee;
+  --bk-color-success-text: #1a4d33;
+  --bk-color-warning-bg:   #fff8e1;
+  --bk-color-warning-text: #b45309;
+  --bk-color-danger-bg:    #fdecea;
+  --bk-color-danger-text:  #6b1a1a;
+  --bk-color-info-bg:      #e8f0fe;
+  --bk-color-info-text:    #1a3a6b;
+
+  /* Hover variants */
+  --bk-color-danger-hover: #a93226;
+
   /* Shadows */
   --bk-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
   --bk-shadow-md:   0 4px 16px rgba(0, 0, 0, 0.12);
@@ -47,9 +65,9 @@
   --bk-transition: 150ms ease;
 }
 
+/* Dark mode vía preferencia del sistema operativo */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Colors — versión dark: primary más claro para mantener contraste */
     --bk-color-primary:       #4a7fcb;
     --bk-color-primary-hover: #6b9fd8;
     --bk-color-secondary:     #4da3ff;
@@ -57,17 +75,81 @@
     --bk-color-warning:       #fbbf24;
     --bk-color-danger:        #f87171;
     --bk-color-info:          #4da3ff;
-
-    /* Neutrals — fondo oscuro tipo navy bancario */
     --bk-color-surface:       #0f172a;
     --bk-color-surface-alt:   #1e293b;
     --bk-color-border:        #334155;
     --bk-color-text:          #e2e8f0;
     --bk-color-text-muted:    #94a3b8;
     --bk-color-text-inverse:  #0f172a;
-
-    /* Shadows — más sutiles sobre fondo oscuro */
+    --bk-color-account-bg:    #162d5a;
+    --bk-color-success-bg:    #163025;
+    --bk-color-success-text:  #34d399;
+    --bk-color-warning-bg:    #352400;
+    --bk-color-warning-text:  #fbbf24;
+    --bk-color-danger-bg:     #351515;
+    --bk-color-danger-text:   #f87171;
+    --bk-color-info-bg:       #1a2a45;
+    --bk-color-info-text:     #4da3ff;
+    --bk-color-danger-hover:  #ef5350;
     --bk-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
     --bk-shadow-md:   0 4px 16px rgba(0, 0, 0, 0.6);
   }
+}
+
+/* Light mode forzado — anula @media cuando el OS está en dark pero Storybook en light */
+:root[data-theme="light"] {
+  --bk-color-primary:       #003087;
+  --bk-color-primary-hover: #00236b;
+  --bk-color-secondary:     #0066cc;
+  --bk-color-success:       #007a3d;
+  --bk-color-warning:       #f5a623;
+  --bk-color-danger:        #c0392b;
+  --bk-color-info:          #0066cc;
+  --bk-color-surface:       #f4f6f9;
+  --bk-color-surface-alt:   #ffffff;
+  --bk-color-border:        #d1d9e0;
+  --bk-color-text:          #1a1a2e;
+  --bk-color-text-muted:    #6b7280;
+  --bk-color-text-inverse:  #ffffff;
+  --bk-color-account-bg:    #003087;
+  --bk-color-success-bg:    #e6f4ee;
+  --bk-color-success-text:  #1a4d33;
+  --bk-color-warning-bg:    #fff8e1;
+  --bk-color-warning-text:  #b45309;
+  --bk-color-danger-bg:     #fdecea;
+  --bk-color-danger-text:   #6b1a1a;
+  --bk-color-info-bg:       #e8f0fe;
+  --bk-color-info-text:     #1a3a6b;
+  --bk-color-danger-hover:  #a93226;
+  --bk-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --bk-shadow-md:   0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode forzado vía atributo (usado por el decorator de Storybook) */
+:root[data-theme="dark"] {
+  --bk-color-primary:       #4a7fcb;
+  --bk-color-primary-hover: #6b9fd8;
+  --bk-color-secondary:     #4da3ff;
+  --bk-color-success:       #34d399;
+  --bk-color-warning:       #fbbf24;
+  --bk-color-danger:        #f87171;
+  --bk-color-info:          #4da3ff;
+  --bk-color-surface:       #0f172a;
+  --bk-color-surface-alt:   #1e293b;
+  --bk-color-border:        #334155;
+  --bk-color-text:          #e2e8f0;
+  --bk-color-text-muted:    #94a3b8;
+  --bk-color-text-inverse:  #0f172a;
+  --bk-color-account-bg:    #162d5a;
+  --bk-color-success-bg:    #163025;
+  --bk-color-success-text:  #34d399;
+  --bk-color-warning-bg:    #352400;
+  --bk-color-warning-text:  #fbbf24;
+  --bk-color-danger-bg:     #351515;
+  --bk-color-danger-text:   #f87171;
+  --bk-color-info-bg:       #1a2a45;
+  --bk-color-info-text:     #4da3ff;
+  --bk-color-danger-hover:  #ef5350;
+  --bk-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --bk-shadow-md:   0 4px 16px rgba(0, 0, 0, 0.6);
 }

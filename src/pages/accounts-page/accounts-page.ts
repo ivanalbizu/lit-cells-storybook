@@ -40,6 +40,9 @@ export class AccountsPage extends LitElement {
       max-width: 900px;
       margin: 0 auto;
       box-sizing: border-box;
+      background: var(--bk-color-surface, #f4f6f9);
+      color: var(--bk-color-text, #1a1a2e);
+      min-height: 100%;
     }
 
     h2 {

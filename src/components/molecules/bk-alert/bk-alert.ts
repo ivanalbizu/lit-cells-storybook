@@ -32,27 +32,27 @@ export class BkAlert extends LitElement {
     }
 
     .alert.info {
-      background: #e8f0fe;
+      background: var(--bk-color-info-bg, #e8f0fe);
       border-color: var(--bk-color-info, #0066cc);
-      color: #1a3a6b;
+      color: var(--bk-color-info-text, #1a3a6b);
     }
 
     .alert.success {
-      background: #e6f4ee;
+      background: var(--bk-color-success-bg, #e6f4ee);
       border-color: var(--bk-color-success, #007a3d);
-      color: #1a4d33;
+      color: var(--bk-color-success-text, #1a4d33);
     }
 
     .alert.warning {
-      background: #fff8e1;
+      background: var(--bk-color-warning-bg, #fff8e1);
       border-color: var(--bk-color-warning, #f5a623);
-      color: #7a4a00;
+      color: var(--bk-color-warning-text, #b45309);
     }
 
     .alert.error {
-      background: #fdecea;
+      background: var(--bk-color-danger-bg, #fdecea);
       border-color: var(--bk-color-danger, #c0392b);
-      color: #6b1a1a;
+      color: var(--bk-color-danger-text, #6b1a1a);
     }
 
     .icon {

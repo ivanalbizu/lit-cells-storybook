@@ -36,7 +36,7 @@ export class LoginPage extends LitElement {
     }
 
     .card {
-      background: #fff;
+      background: var(--bk-color-surface-alt, #fff);
       border-radius: var(--bk-radius-card, 12px);
       box-shadow: var(--bk-shadow-md, 0 4px 16px rgba(0,0,0,0.12));
       padding: 2.5rem;

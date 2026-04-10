@@ -41,6 +41,9 @@ export class HomePage extends LitElement {
       max-width: 900px;
       margin: 0 auto;
       box-sizing: border-box;
+      background: var(--bk-color-surface, #f4f6f9);
+      color: var(--bk-color-text, #1a1a2e);
+      min-height: 100%;
     }
 
     h2 {
@@ -59,7 +62,7 @@ export class HomePage extends LitElement {
     }
 
     .section {
-      background: #fff;
+      background: var(--bk-color-surface-alt, #fff);
       border-radius: var(--bk-radius-card, 12px);
       padding: 1.5rem;
       box-shadow: var(--bk-shadow-card, 0 2px 8px rgba(0,0,0,0.08));

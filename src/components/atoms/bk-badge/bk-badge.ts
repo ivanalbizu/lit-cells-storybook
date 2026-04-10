@@ -30,18 +30,18 @@ export class BkBadge extends LitElement {
     }
 
     span.pending {
-      background: #fff8e1;
-      color: #b45309;
+      background: var(--bk-color-warning-bg, #fff8e1);
+      color: var(--bk-color-warning-text, #b45309);
     }
 
     span.completed {
-      background: #e6f4ee;
-      color: var(--bk-color-success, #007a3d);
+      background: var(--bk-color-success-bg, #e6f4ee);
+      color: var(--bk-color-success-text, #1a4d33);
     }
 
     span.failed {
-      background: #fdecea;
-      color: var(--bk-color-danger, #c0392b);
+      background: var(--bk-color-danger-bg, #fdecea);
+      color: var(--bk-color-danger-text, #6b1a1a);
     }
 
     span::before {
