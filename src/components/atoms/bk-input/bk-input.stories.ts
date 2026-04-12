@@ -17,9 +17,23 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: `Campo de entrada básico. Gestiona su propio label y mensaje de error pero sin wrapper accesible completo — para formularios reales usa \`bk-form-field\`, que añade \`aria-describedby\` y hint.
+        component: `Campo de entrada accesible construido como **Form-Associated Custom Element**.
 
-Emite \`bk-input-change\` con \`{ name, value }\` en cada cambio.`,
+#### Accesibilidad y formularios nativos
+
+Implementa \`static formAssociated = true\` y \`ElementInternals\`, lo que lo hace equivalente a un \`<input>\` nativo en cuanto a:
+
+- **Asociación de label** — \`<label for="id">\` externo queda correctamente vinculado al campo en el árbol de accesibilidad. Screen readers (VoiceOver, NVDA, JAWS) anuncian el label sin configuración adicional.
+- **Participación en formularios** — el valor se envía en \`form.submit()\` usando el atributo \`name\`, aparece en \`form.elements\` y responde a \`form.reset()\`.
+- **Validación nativa** — expone \`ValidityState\` (\`:invalid\` / \`:valid\` CSS, \`form.checkValidity()\`). Soporta \`required\` y errores externos vía prop \`error\`.
+- **\`<fieldset disabled>\`** — se deshabilita automáticamente cuando el formulario padre lo requiere.
+- **Delegación de foco** — \`delegatesFocus: true\` garantiza que el click en un label externo enfoca el \`<input>\` interno del shadow DOM.
+
+> **Nota sobre testers automáticos:** herramientas como axe o el panel a11y de Storybook pueden reportar un falso positivo en la asociación label/input porque analizan el DOM estático y no llegan al shadow DOM. En runtime el browser construye el árbol de accesibilidad correctamente. Ver \`docs/form-associated-element-internals.md\` para más detalle.
+
+Para formularios con hint o layout avanzado usa \`bk-form-field\`, que envuelve este componente.
+
+Emite \`bk-input-input\` y \`bk-input-change\` con \`{ value }\` en cada interacción.`,
       },
     },
   },

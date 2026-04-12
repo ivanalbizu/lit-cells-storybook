@@ -7,7 +7,15 @@ let _counter = 0;
 
 @customElement('bk-input')
 export class BkInput extends LitElement {
+  // Registra el componente como form-associated: el browser gestiona
+  // la asociación con <label for>, participación en submit/reset y
+  // el árbol de accesibilidad de forma idéntica a un <input> nativo.
+  static formAssociated = true;
+  static override shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+
+  private readonly _internals = this.attachInternals();
   private readonly _uid = `bk-input-${++_counter}`;
+
   @property() type: InputType = 'text';
   @property() label = '';
   @property() placeholder = '';
@@ -83,6 +91,36 @@ export class BkInput extends LitElement {
       gap: 0.25rem;
     }
   `;
+
+  // Sincroniza value y validity con el formulario nativo tras cada render
+  override updated(changed: Map<string, unknown>) {
+    if (changed.has('value') || changed.has('error') || changed.has('required')) {
+      this._internals.setFormValue(this.value);
+      this._updateValidity();
+    }
+  }
+
+  // El formulario padre hace reset → restaurar valor vacío
+  formResetCallback() {
+    this.value = '';
+    this._internals.setFormValue('');
+  }
+
+  // Un <fieldset disabled> deshabilita el componente desde el formulario
+  formDisabledCallback(disabled: boolean) {
+    this.disabled = disabled;
+  }
+
+  private _updateValidity() {
+    const input = this.shadowRoot?.querySelector('input') ?? undefined;
+    if (this.required && !this.value) {
+      this._internals.setValidity({ valueMissing: true }, 'Campo requerido', input);
+    } else if (this.error) {
+      this._internals.setValidity({ customError: true }, this.error, input);
+    } else {
+      this._internals.setValidity({});
+    }
+  }
 
   render() {
     return html`
