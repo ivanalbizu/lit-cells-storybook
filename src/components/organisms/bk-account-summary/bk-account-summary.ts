@@ -25,11 +25,6 @@ export class BkAccountSummary extends LitElement {
       gap: var(--bk-space-3, 0.75rem);
       flex-wrap: wrap;
     }
-
-    .actions bk-button {
-      flex: 1;
-      min-width: 120px;
-    }
   `;
 
   render() {

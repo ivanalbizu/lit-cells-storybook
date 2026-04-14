@@ -35,7 +35,7 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: ({ alias, iban, balance, currency, loading }) => html`
-    <div style="max-width:360px;padding:1rem">
+    <div>
       <bk-account-summary
         alias=${alias} iban=${iban} .balance=${balance}
         currency=${currency} ?loading=${loading}
@@ -47,7 +47,7 @@ export const Default: Story = {
 export const Loading: Story = {
   args: { loading: true },
   render: ({ alias, iban, balance, currency, loading }) => html`
-    <div style="max-width:360px;padding:1rem">
+    <div>
       <bk-account-summary
         alias=${alias} iban=${iban} .balance=${balance}
         currency=${currency} ?loading=${loading}
@@ -59,7 +59,7 @@ export const Loading: Story = {
 export const NegativeBalance: Story = {
   args: { alias: 'Cuenta Crédito', balance: -1230.50 },
   render: ({ alias, iban, balance, currency, loading }) => html`
-    <div style="max-width:360px;padding:1rem">
+    <div>
       <bk-account-summary
         alias=${alias} iban=${iban} .balance=${balance}
         currency=${currency} ?loading=${loading}
