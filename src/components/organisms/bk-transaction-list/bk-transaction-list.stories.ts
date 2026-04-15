@@ -40,7 +40,7 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: ({ loading, emptyMessage }) => html`
-    <div style="max-width:520px;padding:1rem">
+    <div>
       <bk-transaction-list
         .transactions=${TRANSACTIONS}
         ?loading=${loading}
@@ -53,7 +53,7 @@ export const Default: Story = {
 export const Loading: Story = {
   args: { loading: true },
   render: ({ loading, emptyMessage }) => html`
-    <div style="max-width:520px;padding:1rem">
+    <div>
       <bk-transaction-list
         .transactions=${TRANSACTIONS}
         ?loading=${loading}
@@ -65,7 +65,7 @@ export const Loading: Story = {
 
 export const Empty: Story = {
   render: ({ loading, emptyMessage }) => html`
-    <div style="max-width:520px;padding:1rem">
+    <div>
       <bk-transaction-list
         .transactions=${[]}
         ?loading=${loading}

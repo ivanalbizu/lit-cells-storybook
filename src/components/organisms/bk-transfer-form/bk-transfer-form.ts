@@ -1,5 +1,11 @@
 import { LitElement, html, css } from 'lit';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { customElement, property, state } from 'lit/decorators.js';
+
+export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'p';
+
+const HEADING_TAGS: readonly string[] = ['h1','h2','h3','h4','h5','h6'];
+const ALLOWED_TAGS: readonly HeadingTag[] = ['h1','h2','h3','h4','h5','h6','div','p'];
 import '../../molecules/bk-form-field/bk-form-field.ts';
 import '../../molecules/bk-alert/bk-alert.ts';
 import '../../atoms/bk-button/bk-button.ts';
@@ -12,6 +18,8 @@ export interface TransferData {
 
 @customElement('bk-transfer-form')
 export class BkTransferForm extends LitElement {
+  @property() heading: string = 'Nueva transferencia';
+  @property() headingTag: HeadingTag = 'h3';
   @property() successMessage = '';
   @property() errorMessage = '';
   @property({ type: Boolean }) loading = false;
@@ -30,7 +38,15 @@ export class BkTransferForm extends LitElement {
       gap: var(--bk-space-4, 1rem);
     }
 
-    h3 {
+    fieldset {
+      border: none;
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      display: contents;
+    }
+
+    .title {
       font-family: var(--bk-font-sans, system-ui, sans-serif);
       font-size: var(--bk-font-size-lg, 1.125rem);
       font-weight: 700;
@@ -38,70 +54,100 @@ export class BkTransferForm extends LitElement {
       margin: 0 0 var(--bk-space-2, 0.5rem);
     }
 
+    legend {
+      font-family: var(--bk-font-sans, system-ui, sans-serif);
+      font-size: var(--bk-font-size-lg, 1.125rem);
+      font-weight: 700;
+      color: var(--bk-color-text, #1a1a2e);
+      margin: 0 0 var(--bk-space-2, 0.5rem);
+      padding: 0;
+      float: left;
+      width: 100%;
+    }
+
+    legend + * { clear: both; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
     .actions {
       display: flex;
       gap: var(--bk-space-3, 0.75rem);
       margin-top: var(--bk-space-2, 0.5rem);
     }
-
-    .actions bk-button:first-child { flex: 2; }
-    .actions bk-button:last-child  { flex: 1; }
   `;
 
   render() {
-    return html`
+    const isHeading = HEADING_TAGS.includes(this.headingTag);
+    const tag = unsafeStatic(ALLOWED_TAGS.includes(this.headingTag) ? this.headingTag : 'h3');
+
+    return staticHtml`
       <div class="form">
-        <h3>Nueva transferencia</h3>
+        ${isHeading ? staticHtml`<${tag} class="title">${this.heading}</${tag}>` : ''}
 
-        ${this.successMessage ? html`
-          <bk-alert type="success" message=${this.successMessage} dismissible></bk-alert>
-        ` : ''}
-        ${this.errorMessage ? html`
-          <bk-alert type="error" message=${this.errorMessage}></bk-alert>
-        ` : ''}
+        <fieldset ?disabled=${this.loading}>
+          <legend class=${isHeading ? 'sr-only' : ''}>${this.heading}</legend>
 
-        <bk-form-field
-          label="IBAN destinatario"
-          name="iban"
-          type="text"
-          placeholder="ES00 0000 0000 0000 0000 0000"
-          value=${this._iban}
-          error=${this._errors.iban ?? ''}
-          required
-          @bk-field-input=${(e: CustomEvent) => { this._iban = e.detail.value; }}
-        ></bk-form-field>
 
-        <bk-form-field
-          label="Importe"
-          name="amount"
-          type="number"
-          placeholder="0,00"
-          value=${this._amount}
-          error=${this._errors.amount ?? ''}
-          hint="Máximo 10.000 € por transferencia"
-          required
-          @bk-field-input=${(e: CustomEvent) => { this._amount = e.detail.value; }}
-        ></bk-form-field>
+          ${this.successMessage ? html`
+            <bk-alert type="success" message=${this.successMessage} dismissible></bk-alert>
+          ` : ''}
+          ${this.errorMessage ? html`
+            <bk-alert type="error" message=${this.errorMessage}></bk-alert>
+          ` : ''}
 
-        <bk-form-field
-          label="Concepto"
-          name="concept"
-          type="text"
-          placeholder="Ej: Alquiler mayo"
-          value=${this._concept}
-          error=${this._errors.concept ?? ''}
-          hint="Opcional"
-          @bk-field-input=${(e: CustomEvent) => { this._concept = e.detail.value; }}
-        ></bk-form-field>
+          <bk-form-field
+            label="IBAN destinatario"
+            name="iban"
+            type="text"
+            placeholder="ES00 0000 0000 0000 0000 0000"
+            value=${this._iban}
+            error=${this._errors.iban ?? ''}
+            ?disabled=${this.loading}
+            required
+            @bk-field-input=${(e: CustomEvent) => { this._iban = e.detail.value; }}
+          ></bk-form-field>
 
-        <div class="actions">
-          <bk-button variant="primary" ?loading=${this.loading} @bk-button-click=${this._submit}>
-            Enviar transferencia
-          </bk-button>
-          <bk-button variant="ghost" @bk-button-click=${this._reset}>
-            Cancelar
-          </bk-button>
-        </div>
+          <bk-form-field
+            label="Importe"
+            name="amount"
+            type="number"
+            placeholder="0,00"
+            value=${this._amount}
+            error=${this._errors.amount ?? ''}
+            hint="Máximo 10.000 € por transferencia"
+            ?disabled=${this.loading}
+            required
+            @bk-field-input=${(e: CustomEvent) => { this._amount = e.detail.value; }}
+          ></bk-form-field>
+
+          <bk-form-field
+            label="Concepto"
+            name="concept"
+            type="text"
+            placeholder="Ej: Alquiler mayo"
+            value=${this._concept}
+            error=${this._errors.concept ?? ''}
+            hint="Opcional"
+            ?disabled=${this.loading}
+            @bk-field-input=${(e: CustomEvent) => { this._concept = e.detail.value; }}
+          ></bk-form-field>
+
+          <div class="actions">
+            <bk-button variant="primary" ?loading=${this.loading} @bk-button-click=${this._submit}>
+              Enviar transferencia
+            </bk-button>
+            <bk-button variant="ghost" @bk-button-click=${this._reset}>
+              Cancelar
+            </bk-button>
+          </div>
+        </fieldset>
       </div>
     `;
   }
