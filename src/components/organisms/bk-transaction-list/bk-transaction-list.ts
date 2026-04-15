@@ -1,5 +1,9 @@
 import { LitElement, html, css } from 'lit';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { customElement, property, state } from 'lit/decorators.js';
+
+export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'p';
+const ALLOWED_TAGS: readonly HeadingTag[] = ['h1','h2','h3','h4','h5','h6','div','p'];
 import '../../molecules/bk-transaction-item/bk-transaction-item.ts';
 import '../../atoms/bk-chip/bk-chip.ts';
 import '../../atoms/bk-spinner/bk-spinner.ts';
@@ -25,6 +29,8 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 @customElement('bk-transaction-list')
 export class BkTransactionList extends LitElement {
+  @property() heading = 'Movimientos';
+  @property() headingTag: HeadingTag = 'h3';
   @property({ type: Array }) transactions: Transaction[] = [];
   @property({ type: Boolean }) loading = false;
   @property() emptyMessage = 'No hay movimientos para mostrar.';
@@ -92,10 +98,11 @@ export class BkTransactionList extends LitElement {
 
   render() {
     const filtered = this._filtered;
+    const tag = unsafeStatic(ALLOWED_TAGS.includes(this.headingTag) ? this.headingTag : 'h3');
 
-    return html`
+    return staticHtml`
       <div class="header">
-        <h3 class="title">Movimientos</h3>
+        <${tag} class="title">${this.heading}</${tag}>
       </div>
 
       ${this._categories.length > 0 ? html`

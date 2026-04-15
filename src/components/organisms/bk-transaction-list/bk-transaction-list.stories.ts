@@ -17,6 +17,8 @@ const meta: Meta = {
   title: 'Organisms/BkTransactionList',
   component: 'bk-transaction-list',
   argTypes: {
+    heading:      { control: 'text' },
+    headingTag:   { control: 'select', options: ['h1','h2','h3','h4','h5','h6','div','p'] },
     loading:      { control: 'boolean' },
     emptyMessage: { control: 'text' },
   },
@@ -30,6 +32,8 @@ Con \`loading\` muestra spinners en lugar de filas. Con array vacío (tras filtr
     },
   },
   args: {
+    heading: 'Movimientos',
+    headingTag: 'h3',
     loading: false,
     emptyMessage: 'No hay movimientos para mostrar.',
   },
@@ -39,9 +43,11 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: ({ loading, emptyMessage }) => html`
+  render: ({ heading, headingTag, loading, emptyMessage }) => html`
     <div>
       <bk-transaction-list
+        heading=${heading}
+        headingTag=${headingTag}
         .transactions=${TRANSACTIONS}
         ?loading=${loading}
         emptyMessage=${emptyMessage}
@@ -52,9 +58,11 @@ export const Default: Story = {
 
 export const Loading: Story = {
   args: { loading: true },
-  render: ({ loading, emptyMessage }) => html`
+  render: ({ heading, headingTag, loading, emptyMessage }) => html`
     <div>
       <bk-transaction-list
+        heading=${heading}
+        headingTag=${headingTag}
         .transactions=${TRANSACTIONS}
         ?loading=${loading}
         emptyMessage=${emptyMessage}
@@ -64,10 +72,12 @@ export const Loading: Story = {
 };
 
 export const Empty: Story = {
-  render: ({ loading, emptyMessage }) => html`
+  render: ({ heading, headingTag, loading, emptyMessage }) => html`
     <div>
       <bk-transaction-list
-        .transactions=${[]}
+        heading=${heading}
+        headingTag=${headingTag}
+        .transactions=${[] as Transaction[]}
         ?loading=${loading}
         emptyMessage=${emptyMessage}
       ></bk-transaction-list>
