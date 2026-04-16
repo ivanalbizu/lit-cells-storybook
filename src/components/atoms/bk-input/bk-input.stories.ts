@@ -15,6 +15,7 @@ const meta: Meta = {
     required:    { control: 'boolean' },
   },
   parameters: {
+    actions: { handles: ['bk-input-input', 'bk-input-change'] },
     docs: {
       description: {
         component: `Campo de entrada accesible construido como **Form-Associated Custom Element**.

@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 import type { Preview, Decorator } from '@storybook/web-components-vite'
+import { withActions } from 'storybook/actions/decorator';
 import '../src/css/tokens.css';
 import '../src/css/global.css';
 
@@ -25,7 +26,7 @@ const withColorScheme: Decorator = (story, context) => {
 };
 
 const preview: Preview = {
-  decorators: [withColorScheme],
+  decorators: [withColorScheme, withActions],
   tags: ['autodocs'],
   parameters: {
     backgrounds: {

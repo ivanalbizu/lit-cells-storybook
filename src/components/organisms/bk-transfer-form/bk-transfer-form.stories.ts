@@ -13,6 +13,7 @@ const meta: Meta = {
     errorMessage:   { control: 'text' },
   },
   parameters: {
+    actions: { handles: ['bk-transfer-submit', 'bk-transfer-cancel'] },
     docs: {
       description: {
         component: `Formulario de transferencia con validación. Campos: IBAN destino, importe y concepto.

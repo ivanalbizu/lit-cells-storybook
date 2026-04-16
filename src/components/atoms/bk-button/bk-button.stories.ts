@@ -15,6 +15,7 @@ const meta: Meta = {
     label:    { control: 'text' },
   },
   parameters: {
+    actions: { handles: ['bk-button-click'] },
     docs: {
       description: {
         component: `Botón polimórfico del sistema. Renderiza \`<button>\` por defecto; si recibe \`href\`, renderiza un \`<a>\` semántico navegable.

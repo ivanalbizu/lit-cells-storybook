@@ -11,6 +11,7 @@ const meta: Meta = {
     dismissible: { control: 'boolean' },
   },
   parameters: {
+    actions: { handles: ['bk-alert-dismiss'] },
     docs: {
       description: {
         component: `Mensaje de notificación con icono contextual. Cuatro tipos semánticos: \`info\`, \`success\`, \`warning\`, \`error\`.
